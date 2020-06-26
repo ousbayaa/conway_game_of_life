@@ -18,14 +18,24 @@ function Grid() {
       }
       list.push(row);
     }
+    console.log(list)
     setGrid(list);
   }
   useEffect(() => {
-    createGrid();
+    createGrid(width, height);
     console.log("creating grid");
-  })
+    console.log(grid)
+  }, [])
+
+  
   return (
-    <Cell />
+    <div>
+      {grid.map((x) =>
+        x.map((y) =>
+          <Cell />
+        )
+      )}
+    </div>
   )
 }
 
