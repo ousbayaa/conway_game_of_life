@@ -2,6 +2,7 @@ import React, {useState, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import Cell from '../cell_component/cell';
 import { useCallback } from 'react';
+import {Container, Col, Row } from 'react-bootstrap'
 
 function Grid() {
   const width = 25
@@ -29,13 +30,15 @@ function Grid() {
 
   
   return (
-    <div>
+    <Container style={{width: 'max-content'}}>
       {grid.map((x) =>
-        x.map((y) =>
-          <Cell />
-        )
+        <Row className="no-gutters" style={{width: 'max-content'}}>
+          {x.map((y) =>
+            <Col style={{padding: '0 !important', flexGrow: 0, minWidth: 'unset'}}><Cell /></Col>
+          )}
+        </Row>
       )}
-    </div>
+    </Container>
   )
 }
 
