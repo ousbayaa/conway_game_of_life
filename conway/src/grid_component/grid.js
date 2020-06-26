@@ -1,43 +1,32 @@
-import React from 'react';
+import React, {useState, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import Cell from '../cell_component/cell';
+import { useCallback } from 'react';
 
-class Grid extends React.Component {
-  render() {
-    return(
-      <div>
-        Grid
-      </div>
-    )
-  }
-}
+function Grid() {
+  const width = 25
+  const height = 25
 
-class Main extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      generation: 0,
+  const [grid, setGrid] = useState([]);
+
+  function createGrid(width, height) {
+    let list = [];
+    for(let x = 0; x < width; x++){
+      let row = [];
+      for(let y = 0; y < height; y++){
+        row[y] = 0;
+      }
+      list.push(row);
     }
+    setGrid(list);
   }
-
-  render() {
-    return (
-      <div>
-        <h1> The Game of Life</h1>
-        <Grid 
-        />
-        <h2>Generations: {this.state.generation}</h2>
-      </div>
-    );
-  }
+  useEffect(() => {
+    createGrid();
+    console.log("creating grid");
+  })
+  return (
+    <Cell />
+  )
 }
-
-ReactDOM.render(
-  <React.StrictMode>
-    <Main/>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
 
 export default Grid;
-
