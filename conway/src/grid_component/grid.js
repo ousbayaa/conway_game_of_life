@@ -19,6 +19,7 @@ function Grid() {
       }
       list.push(row);
     }
+
     console.log(list)
     setGrid(list);
   }
@@ -34,7 +35,9 @@ function Grid() {
       {grid.map((x) =>
         <Row className="no-gutters" style={{width: 'max-content'}}>
           {x.map((y) =>
-            <Col style={{padding: '0 !important', flexGrow: 0, minWidth: 'unset'}}><Cell /></Col>
+            <Col style={{padding: '0 !important', flexGrow: 0, minWidth: 'unset'}}>
+              <Cell key={x.toString() + y.toString()} value={y}/>
+              </Col>
           )}
         </Row>
       )}
