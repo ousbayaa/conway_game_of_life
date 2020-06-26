@@ -31,7 +31,9 @@ function Grid() {
     }
     setGrid(list);
   }
-
+  useEffect(() => {
+    alert("First rule: A Live Cell with 2 or 3 Live Neighbour, Survives.    Second Rule: Any dead cell with three live neighbours becomes a live cell.")
+  }, [])
   useEffect(() => {
     createGrid(width, height)
   }, [])
@@ -158,15 +160,28 @@ function Grid() {
     setIterate(iterate + 1)
     iter()
   }
+
+  function setGridHandler(x, y){
+    if(!isStart){
+      let newValue = 0
+      if (grid[x][y] === 0){
+          newValue = 1
+      }
+  
+      let newGrid = grid
+      newGrid[x][y] = newValue
+      setGrid([...newGrid]);
+    }
+  }
   
   return (
     <>
     <Container style={{width: 'max-content'}}>
-      {grid.map((x) =>
-        <Row className="no-gutters" style={{width: 'max-content'}}>
-          {x.map((y) =>
-            <Col style={{padding: '0 !important', flexGrow: 0, minWidth: 'unset'}}>
-              <Cell key={x.toString() + y.toString()} value={y}/>
+      {grid.map((x, iX) =>
+        <Row key={iX} className="no-gutters" style={{width: 'max-content'}}>
+          {x.map((y, iY) =>
+            <Col key={"col-"+iY} style={{padding: '0 !important', flexGrow: 0, minWidth: 'unset'}}>
+              <Cell key={iX + "-" + iY} value={y} x={iX} y={iY} grid={grid} setGridHandler={setGridHandler} />
               </Col>
           )}
         </Row>
@@ -190,9 +205,9 @@ function Grid() {
       <Button onClick={()=>next()} variant="secondary" size="lg">
       Next
     </Button>
-    <p>Current Generation: {iterate}</p>
+    <p style={{color: 'dodgerblue'}}>Current Generation: {iterate}</p>
     </div>
-    <div style={{display: "flex", alignItems: "center", flexDirection: "column"}}>
+    <div style={{display: "flex", alignItems: "center", flexDirection: "column", color: "dodgerblue"}}>
       <div style={{width: "25%"}}>
         Width: {height}
         <InputRange
