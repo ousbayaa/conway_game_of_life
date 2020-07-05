@@ -4,13 +4,13 @@ function Cell(props) {
     
     let color = ""
     if (props.value === 1){
-        color = "red"
+        color = "darkorange"
     } else {
-        color = "white"
+        color = "lightslategray"
     }
 
     return (
-        <div id={props.x + "-" + props.y} onClick={()=>props.setGridHandler(props.x, props.y)} style={{border: 'solid 1px black', backgroundColor: color, width: '15px', height: '15px'}}/>
+        <div id={props.x + "-" + props.y} onClick={()=>props.setGridHandler(props.x, props.y)} style={{border: 'solid 1px black', backgroundColor: color, width: '15px', height: '15px', border: 'dotted'}}/>
     )
 }
 

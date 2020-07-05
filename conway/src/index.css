@@ -1,6 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap');
+
 body {
-  background-image: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/triangles.png) 
+  background-image: url(images/photo-1457364887197-9150188c107b.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
+#bg{
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  min-width: 100%;
+  min-height: 100%;
+}
+
+h1 {
+  color: dodgerblue;
+  font-family: 'Chelsea Market', cursive;
+}
+
+.input-range__label {
+  font-family: 'Chelsea Market', cursive !important;
+  color: 'red' !important
+}
+
+.input-range__slider{
+  background: darkcyan !important;
+  border: 1px solid white !important;
+}
+
+
+
 /*   
 .box {
   display: inline-block;       

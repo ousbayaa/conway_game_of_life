@@ -176,7 +176,29 @@ function Grid() {
   
   return (
     <>
-    <Container style={{width: 'max-content'}}>
+    <div>
+      <h1 style={{color: 'floralwhite'}}> John Conway's Game of Life </h1>
+    </div>
+    <div style={{display: "flex", alignItems: "center", flexDirection: "column", color: "floralwhite", fontFamily: 'Chelsea Market, cursive'}}>
+      <div style={{width: "25%"}}>
+        Width: {height}
+        <InputRange
+            style={{fontFamily: 'Chelsea Market, cursive'}}
+            maxValue={50}
+            minValue={25}
+            value={height}
+            onChange={value => setHeight(value)} />
+      </div>
+      <div style={{width: "25%", paddingTop: "20px", flexDirection: 'row'}}>
+        Height: {width}
+        <InputRange
+            maxValue={50}
+            minValue={25}
+            value={width}
+            onChange={value => setWidth(value)} />
+      </div>
+    </div>
+    <Container style={{width: 'max-content', paddingTop: '5%'}}>
       {grid.map((x, iX) =>
         <Row key={iX} className="no-gutters" style={{width: 'max-content'}}>
           {x.map((y, iY) =>
@@ -187,43 +209,25 @@ function Grid() {
         </Row>
       )}
     </Container>
-    <div>
-      <Button onClick={()=>start()} variant="primary" size="lg">
+    <div style={{marginTop: '14px'}}>
+      <Button style={{backgroundColor: 'azure', color: 'darkslategrey', fontFamily: 'Chelsea Market, cursive'}} onClick={()=>start()} variant="primary" size="lg">
         Start
       </Button>
-      <Button onClick={()=>stop()} variant="secondary" size="lg">
+      <Button style={{backgroundColor: 'crimson', color: 'white', fontFamily: 'Chelsea Market, cursive'}} onClick={()=>stop()} variant="secondary" size="lg">
         Stop
       </Button>
-      <Button onClick={()=>clear()} variant="secondary" size="lg">
+      <Button style={{backgroundColor: 'azure', color: 'darkslategrey', fontFamily: 'Chelsea Market, cursive'}} onClick={()=>clear()} variant="secondary" size="lg">
         Clear
       </Button>
     </div>
     <div>
-      <Button onClick={()=>randomize()} variant="secondary" size="lg">
+      <Button style={{backgroundColor: 'azure', color: 'darkslategrey', fontFamily: 'Chelsea Market, cursive'}} onClick={()=>randomize()} variant="secondary" size="lg">
         Randomize
       </Button>
-      <Button onClick={()=>next()} variant="secondary" size="lg">
+      <Button style={{backgroundColor: 'azure', color: 'darkslategrey', fontFamily: 'Chelsea Market, cursive'}} onClick={()=>next()} variant="secondary" size="lg">
       Next
     </Button>
-    <p style={{color: 'dodgerblue'}}>Current Generation: {iterate}</p>
-    </div>
-    <div style={{display: "flex", alignItems: "center", flexDirection: "column", color: "dodgerblue"}}>
-      <div style={{width: "25%"}}>
-        Width: {height}
-        <InputRange
-            maxValue={100}
-            minValue={25}
-            value={height}
-            onChange={value => setHeight(value)} />
-      </div>
-      <div style={{width: "25%", paddingTop: "20px"}}>
-        Height: {width}
-        <InputRange
-            maxValue={100}
-            minValue={25}
-            value={width}
-            onChange={value => setWidth(value)} />
-      </div>
+    <p style={{color: 'azure', fontFamily: 'Chelsea Market, cursive', fontSize:'2.1em'}}>Current Generation: {iterate}</p>
     </div>
     </>
   )
